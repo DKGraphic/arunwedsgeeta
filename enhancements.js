@@ -47,9 +47,10 @@ document.querySelector('.schedule .container').insertAdjacentHTML('beforeend', `
 const backgroundMusic = document.createElement('audio');
 backgroundMusic.src = 'assets/wedding-medley.mp3';
 backgroundMusic.loop = true;
+backgroundMusic.autoplay = true;
 backgroundMusic.preload = 'metadata';
 backgroundMusic.volume = .28;
-backgroundMusic.muted = true;
+backgroundMusic.muted = false;
 document.body.append(backgroundMusic);
 
 const musicButton = document.createElement('button');
@@ -61,23 +62,34 @@ musicButton.innerHTML = '<span aria-hidden="true">♪</span><i>Music</i>';
 document.body.append(musicButton);
 
 let musicPlaying = false;
-musicButton.addEventListener('click', async () => {
-  if (musicPlaying) {
-    backgroundMusic.pause();
-    musicPlaying = false;
-    musicButton.classList.remove('is-playing');
-    musicButton.setAttribute('aria-label', 'Play background music');
-    musicButton.setAttribute('aria-pressed', 'false');
-    return;
-  }
+function setMusicState(playing) {
+  musicPlaying = playing;
+  musicButton.classList.toggle('is-playing', playing);
+  musicButton.setAttribute('aria-label', playing ? 'Mute background music' : 'Play background music');
+  musicButton.setAttribute('aria-pressed', String(playing));
+}
+
+async function startMusic() {
   backgroundMusic.muted = false;
   try {
     await backgroundMusic.play();
-    musicPlaying = true;
-    musicButton.classList.add('is-playing');
-    musicButton.setAttribute('aria-label', 'Mute background music');
-    musicButton.setAttribute('aria-pressed', 'true');
+    setMusicState(true);
+    return true;
   } catch (error) {
-    musicButton.setAttribute('aria-label', 'Background music is unavailable');
+    return false;
+  }
+}
+
+musicButton.addEventListener('click', async () => {
+  if (musicPlaying) {
+    backgroundMusic.pause();
+    setMusicState(false);
+  } else {
+    await startMusic();
   }
 });
+
+window.addEventListener('load', startMusic, { once: true });
+document.addEventListener('pointerdown', event => {
+  if (!musicPlaying && !event.target.closest('.music-toggle')) startMusic();
+}, { once: true });
