@@ -24,7 +24,7 @@
 .rsvp-intro { position: relative; overflow: hidden; isolation: isolate; }
 .rsvp-intro > :not(.rsvp-art) { position: relative; z-index: 1; }
 .rsvp-art { display: none; }
-.music-toggle { position: fixed; z-index: 20; right: 1.3rem; bottom: 1.35rem; display: inline-flex; align-items: center; gap: .45rem; padding: .62rem .78rem; border: 1px solid rgba(181,139,66,.65); border-radius: 999px; background: rgba(249,245,238,.94); color: var(--wine); box-shadow: 0 6px 18px rgba(57,23,31,.17); backdrop-filter: blur(8px); font-family: var(--sans); font-size: .56rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: .25s; }
+.music-toggle { position: fixed; z-index: 20; right: 1.3rem; bottom: 1.35rem; display: inline-flex; align-items: center; padding: .5rem; border: 1px solid rgba(181,139,66,.65); border-radius: 50%; background: rgba(249,245,238,.94); color: var(--wine); box-shadow: 0 6px 18px rgba(57,23,31,.17); backdrop-filter: blur(8px); transition: .25s; }
 .music-toggle span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: var(--wine); color: #f8ddb0; font-size: .82rem; line-height: 1; }
 .music-toggle i { font-style: normal; }
 .music-toggle.is-playing { background: var(--wine); color: #f8ddb0; border-color: var(--wine); }

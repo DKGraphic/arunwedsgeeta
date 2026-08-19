@@ -58,7 +58,7 @@ musicButton.className = 'music-toggle';
 musicButton.type = 'button';
 musicButton.setAttribute('aria-label', 'Play background music');
 musicButton.setAttribute('aria-pressed', 'false');
-musicButton.innerHTML = '<span aria-hidden="true">♪</span><i>Music</i>';
+musicButton.innerHTML = '<span aria-hidden="true">♪</span>';
 document.body.append(musicButton);
 
 let musicPlaying = false;
