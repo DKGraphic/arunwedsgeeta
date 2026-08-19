@@ -1,0 +1,25 @@
+/* Correct the hero artwork stacking and retain the full portrait framing. */
+.hero-art {
+  isolation: isolate;
+}
+
+.hero-art img {
+  position: relative;
+  z-index: 1;
+  object-position: center bottom;
+}
+
+.sun-disc {
+  z-index: -1;
+}
+
+.story-photo img {
+  object-position: center 18%;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
