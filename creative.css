@@ -24,6 +24,12 @@
 .rsvp-intro { position: relative; overflow: hidden; isolation: isolate; }
 .rsvp-intro > :not(.rsvp-art) { position: relative; z-index: 1; }
 .rsvp-art { display: none; }
+.music-toggle { position: fixed; z-index: 20; right: 1.3rem; bottom: 1.35rem; display: inline-flex; align-items: center; gap: .45rem; padding: .62rem .78rem; border: 1px solid rgba(181,139,66,.65); border-radius: 999px; background: rgba(249,245,238,.94); color: var(--wine); box-shadow: 0 6px 18px rgba(57,23,31,.17); backdrop-filter: blur(8px); font-family: var(--sans); font-size: .56rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: .25s; }
+.music-toggle span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: var(--wine); color: #f8ddb0; font-size: .82rem; line-height: 1; }
+.music-toggle i { font-style: normal; }
+.music-toggle.is-playing { background: var(--wine); color: #f8ddb0; border-color: var(--wine); }
+.music-toggle.is-playing span { background: #f8ddb0; color: var(--wine); animation: music-pulse 1.5s ease-in-out infinite; }
+@keyframes music-pulse { 50% { transform: scale(1.17); } }
 
 /* Layered editorial memories wall */
 .gallery-grid { display: grid; grid-template-columns: 1.16fr .84fr 1fr; grid-template-rows: 218px 218px 178px; gap: 1rem; }
@@ -46,6 +52,7 @@
   .hero-date b { font-size: .75rem; }.hero-date small { font-size: .43rem; letter-spacing: .1em; }
   .event-art { width: 46%; opacity: .12; right: -5%; }
   .schedule-line { margin-bottom: .75rem; }
+  .music-toggle { right: 1rem; bottom: 4.8rem; padding: .58rem .7rem; }
   .calendar-chase { height: 170px; width: 100%; padding: 0 .6rem; }
   .chase-groom, .chase-bride { height: 160px; width: 142px; }
   .chase-bride { width: 150px; }

@@ -43,3 +43,41 @@ document.querySelector('.schedule .container').insertAdjacentHTML('beforeend', `
     <img class="chase-bride" src="assets/bride-running.png" alt="">
   </div>
 `);
+
+const backgroundMusic = document.createElement('audio');
+backgroundMusic.src = 'assets/wedding-medley.mp3';
+backgroundMusic.loop = true;
+backgroundMusic.preload = 'metadata';
+backgroundMusic.volume = .28;
+backgroundMusic.muted = true;
+document.body.append(backgroundMusic);
+
+const musicButton = document.createElement('button');
+musicButton.className = 'music-toggle';
+musicButton.type = 'button';
+musicButton.setAttribute('aria-label', 'Play background music');
+musicButton.setAttribute('aria-pressed', 'false');
+musicButton.innerHTML = '<span aria-hidden="true">♪</span><i>Music</i>';
+document.body.append(musicButton);
+
+let musicPlaying = false;
+musicButton.addEventListener('click', async () => {
+  if (musicPlaying) {
+    backgroundMusic.pause();
+    musicPlaying = false;
+    musicButton.classList.remove('is-playing');
+    musicButton.setAttribute('aria-label', 'Play background music');
+    musicButton.setAttribute('aria-pressed', 'false');
+    return;
+  }
+  backgroundMusic.muted = false;
+  try {
+    await backgroundMusic.play();
+    musicPlaying = true;
+    musicButton.classList.add('is-playing');
+    musicButton.setAttribute('aria-label', 'Mute background music');
+    musicButton.setAttribute('aria-pressed', 'true');
+  } catch (error) {
+    musicButton.setAttribute('aria-label', 'Background music is unavailable');
+  }
+});
