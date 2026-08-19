@@ -3,8 +3,8 @@ const storyImage = document.querySelector('.story-photo img');
 storyImage.src = 'assets/couple-pink.png';
 storyImage.alt = 'Arun and Geetha surrounded by pink flowers';
 
-document.querySelector('.event-card .event-place').innerHTML = '✦ &nbsp; Geetha Home';
-document.querySelector('.schedule-line > div:first-child small').textContent = 'Geetha Home';
+document.querySelector('.event-card .event-place').innerHTML = '✦ &nbsp; Geetha\'s Home';
+document.querySelector('.schedule-line > div:first-child small').textContent = "Geetha's Home";
 
 document.querySelector('.hero-date').innerHTML = `
   <span><b>17 September</b><small>Engagement</small></span>
