@@ -32,22 +32,22 @@
 @keyframes music-pulse { 50% { transform: scale(1.17); } }
 
 /* Layered editorial memories wall */
-.gallery-grid { display: grid; grid-template-columns: 1.16fr .84fr 1fr; grid-template-rows: 218px 218px 178px; gap: 1rem; }
-.gallery-item { border: 1px solid rgba(181,139,66,.28); border-radius: 2px; }
-.gallery-item:first-child { grid-row: span 2; }
-.gallery-pink { background: linear-gradient(135deg, #f9dce1, #ebafbd); }
-.gallery-pink img { padding: .35rem; }
-.gallery-black { grid-row: span 2; }
-.gallery-family { grid-column: span 2; }
-.gallery-portrait { background: #e8d9c8; }
-.gallery-portrait img { object-position: center 24%; }
-.gallery-joy { background: #f2d9bb; grid-column: 3; grid-row: 1; }
+.gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, 178px); gap: 1rem; }
+.gallery-item { border: 1px solid rgba(181,139,66,.28); border-radius: 3px; }
+.gallery-grid .gallery-item img { width: 100%; height: 100%; padding: .45rem; object-fit: contain; object-position: center; }
+.gallery-grid .gallery-pink { grid-column: 1 / span 5; grid-row: 1 / span 3; background: linear-gradient(135deg, #f9dce1, #ebafbd); }
+.gallery-pink img { padding: .25rem !important; }
+.gallery-grid .gallery-black { grid-column: 6 / span 3; grid-row: 1 / span 3; background: #2c2525; }
+.gallery-grid .gallery-family { grid-column: 9 / span 4; grid-row: 1 / span 2; background: #493636; }
+.gallery-grid .gallery-portrait { grid-column: 9 / span 2; grid-row: 3; background: #e8d9c8; }
+.gallery-grid .gallery-joy { grid-column: 11 / span 2; grid-row: 3; background: #f2d9bb; }
 .image-number { left: .85rem; right: auto !important; top: .75rem; bottom: auto !important; background: rgba(56,29,32,.65); width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; font-size: .55rem !important; }
 .image-caption { position: absolute; z-index: 2; left: 1.1rem; right: 1.1rem; bottom: 1rem; color: white; text-align: left; text-transform: uppercase; letter-spacing: .16em; font-size: .53rem; text-shadow: 0 1px 4px #2c1821; opacity: 0; transform: translateY(8px); transition: .3s; }
 .image-caption em { display: block; margin-top: .25rem; font-family: var(--serif); font-size: 1.1rem; font-style: italic; text-transform: none; letter-spacing: 0; }
 .gallery-item:hover .image-caption { opacity: 1; transform: none; }
 
 @media (max-width: 767px) {
+  .hero:before { width: 115vw; height: 115vw; right: -42vw; top: 58%; }
   .hero-date { gap: .55rem; padding: .48rem .58rem; margin: 1.35rem auto 1.65rem; }
   .hero-date b { font-size: .75rem; }.hero-date small { font-size: .43rem; letter-spacing: .1em; }
   .event-art { width: 46%; opacity: .12; right: -5%; }
@@ -56,12 +56,12 @@
   .calendar-chase { height: 170px; width: 100%; padding: 0 .6rem; }
   .chase-groom, .chase-bride { height: 160px; width: 142px; }
   .chase-bride { width: 150px; }
-  .gallery-grid { grid-template-columns: 1.05fr .95fr; grid-template-rows: 225px 160px 160px 125px; gap: .65rem; }
-  .gallery-item:first-child { grid-row: span 2; }
-  .gallery-black { grid-row: span 2; }
-  .gallery-family { grid-column: span 2; }
-  .gallery-portrait, .gallery-joy { grid-row: auto; }
-  .gallery-joy { display: none; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 205px 205px 150px 145px; gap: .65rem; }
+  .gallery-grid .gallery-pink { grid-column: 1; grid-row: 1 / span 2; }
+  .gallery-grid .gallery-black { grid-column: 2; grid-row: 1 / span 2; }
+  .gallery-grid .gallery-family { grid-column: 1 / span 2; grid-row: 3; }
+  .gallery-grid .gallery-portrait { grid-column: 1; grid-row: 4; }
+  .gallery-grid .gallery-joy { display: block; grid-column: 2; grid-row: 4; }
   .image-caption { opacity: 1; transform: none; left: .75rem; bottom: .65rem; }
   .image-caption em { font-size: .95rem; }
 }
